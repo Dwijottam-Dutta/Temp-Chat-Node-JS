@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Temp-Chat</title>
+    <link rel="icon" href="web-ico.svg">
+    <script>
+      const roomName = "<%= roomName %>";
+      alert(`You entered a private chatRoom with code: "${roomName}"`)
+    </script>
+    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script defer src="script.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <style>
+      /* width */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: #f1f1f100;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: rgb(18, 18, 18);
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgb(43, 43, 43);
+      }
+      /* body {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    #message-container {
+      width: 80%;
+      max-width: 1200px;
+    }
+
+    #message-container div {
+      background-color: #CCC;
+      padding: 5px;
+    }
+
+    #message-container div:nth-child(2n) {
+      background-color: #FFF;
+    }
+
+    #send-container {
+      position: fixed;
+      padding-bottom: 30px;
+      bottom: 0;
+      background-color: white;
+      max-width: 1200px;
+      width: 80%;
+      display: flex;
+    }
+
+    #message-input {
+      flex-grow: 1;
+    } */
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #222;
+        font-family: "Courier New", Courier, monospace;
+        color: #fff;
+        font-family: sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      #send-container {
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        display: flex;
+        background-color: #222;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        height: 10vh;
+        width: 100%;
+      }
+      #message-container {
+        overflow-y: scroll;
+        width: 100%;
+        padding-top: 20px;
+        height: 100vh;
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-bottom: 50px;
+      }
+      #message-container .bubble {
+        padding-right: 20px;
+        padding-bottom: 6px;
+        padding-top: 6px;
+        padding-left: 20px;
+        background-color: rgb(43, 43, 43);
+        margin-bottom: 10px;
+        /* height: 40px; */
+        justify-content: center;
+        /* width: 10%; */
+        /* align-items: center; */
+        border-radius: 5px;
+        font-family: "Courier New", Courier, monospace;
+      }
+      input {
+        border: 1px solid #555;
+        background-color: transparent;
+        width: 100%;
+        padding: 10px;
+        border-radius: 20px;
+        color: #fff;
+        font-family: "Courier New", Courier, monospace;
+      }
+      button {
+        background-color: transparent;
+        border: 1px solid #555;
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        margin-left: 5px;
+        width: 13%;
+      }
+      .bubble {
+        border-radius: 20px;
+        background-color: #444;
+        margin: 4px;
+        padding: 5px 10px;
+        display: inline-block;
+      }
+      #term_and_condition {
+        width: 100%;
+        text-align: center;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        background-color: rgb(18, 18, 18);
+        font-family: "Courier New", Courier, monospace;
+      }
+      a{
+        cursor: pointer;
+        color:#fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="term_and_condition">
+      <a href="/"><b>Temp-Chat</b></a> doesn't store any message in the server
+    </div>
+    <div id="message-container"></div>
+    <form id="send-container">
+      <input
+        type="text"
+        placeholder="Enter your message here ..."
+        id="message-input"
+      />
+      <button type="submit" id="send-button">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </form>
+  </body>
+</html>

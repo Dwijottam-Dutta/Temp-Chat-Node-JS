@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Temp-Chat</title>
+    <link rel="icon" href="web-ico.svg">
+    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #222;
+        color: #fff;
+        height: 100vh;
+        font-family: sans-serif;
+      }
+      .main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .options{
+        margin-top: 20px;
+        font-family: "Courier New", Courier, monospace;
+        color: #a7a7a7;
+        font-weight: 500;
+      }
+
+      a{
+        cursor: pointer;
+        color:#fff;
+      }
+
+      text {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 50px;
+        font-weight: 600;
+      }
+      p{
+        font-family: "Courier New", Courier, monospace;
+        font-size: 20px;
+        font-weight: 300;
+        margin: 0%;
+      }
+      form {
+        display: none;
+        justify-content: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 100%;
+      }
+      input {
+        border: 1px solid #555;
+        background-color: transparent;
+        width: 30%;
+        font-family: "Courier New", Courier, monospace;
+        padding: 10px;
+        border-radius: 20px;
+        color: #fff;
+        width: 90%;
+      }
+      button{
+        background-color: transparent;
+        border: 1px solid #555;
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        margin-left: 5px;
+        width: 13%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div id="room-container">
+    <% Object.keys(rooms).forEach(room => { %>
+      <div><%= room %></div>
+      <a href="/<%= room %>">Join</a>
+    <% }) %>
+    </div> -->
+  <div class="main">
+    <text>Temp-Chat</text>
+    <p>DJ DWAZZ</p>
+    <div class="options"> 
+      <b id="sus">></b>
+      <a id="join" onclick="JOIN_SHOW()"><u>Join</u></a>
+      <b id="sus">|</b>
+      <a id="create" onclick="CREATE_SHOW()"><u>Create</u></a>
+      <b id="sus"><</b>
+    </div>
+    <form action="/room" method="POST" id="create_sec">
+      <input name="room" placeholder="Enter your code" type="text" required />
+      <button type="submit"><i class="fas fa-plus"></i></button>
+    </form>
+    <form id="join_sec">
+      <input name="room" placeholder="Enter code of ChatRoom" type="text" required id="join_name_link"/>
+      <button type="submit"><i class="fas fa-toilet"></i></button>
+    </form>
+  </div>
+  </body>
+
+  <script>
+    function JOIN_SHOW(){
+      document.getElementById("join_sec").style.display = "flex"
+      document.getElementById("create_sec").style.display = "none"
+    }
+
+    function CREATE_SHOW(){
+      document.getElementById("join_sec").style.display = "none"
+      document.getElementById("create_sec").style.display = "flex"
+    }
+
+
+    join_sec.addEventListener('submit', e => {
+    e.preventDefault()
+    window.location = `/${document.getElementById("join_name_link").value}`;
+
+  })
+  </script>
+</html>
