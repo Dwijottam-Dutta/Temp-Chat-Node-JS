@@ -1,4 +1,4 @@
-const socket = io('https://temp-chat-cxcl.onrender.com:3000')
+const socket = io('')
 const messageContainer = document.getElementById('message-container')
 const roomContainer = document.getElementById('room-container')
 const messageForm = document.getElementById('send-container')
